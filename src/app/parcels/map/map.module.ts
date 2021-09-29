@@ -7,14 +7,10 @@ import { IonicModule } from '@ionic/angular';
 import { MapPageRoutingModule } from './map-routing.module';
 
 import { MapPage } from './map.page';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    MapPageRoutingModule
-  ],
-  declarations: [MapPage]
+    imports: [CommonModule, FormsModule, IonicModule, LeafletModule, MapPageRoutingModule],
+    declarations: [MapPage],
 })
 export class MapPageModule {}

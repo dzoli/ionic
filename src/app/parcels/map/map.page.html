@@ -1,12 +1,42 @@
-<ion-header>
+<ion-header [translucent]="true">
     <ion-toolbar color="primary">
-        <!-- <ion-buttons slot="start">
-            <ion-back-button defaultHref="parcels"></ion-back-button>
-        </ion-buttons> -->
-        <ion-title>Map</ion-title>
+        <ion-title size="large" class="ion-margin"> <h1>Ionic Leaflet Map</h1> </ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <div #googleMap id="googleMap"></div>
+<ion-content [fullscreen]="true" [scrollY]="false">
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+        <ion-fab-button>
+            <ion-icon name="layers-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+            <ion-fab-button
+                [color]="selectedBaseLayer === baseLayer.cycling ? 'danger' : 'primary'"
+                (click)="switchBaseLayer(baseLayer.cycling)"
+            >
+                <ion-icon name="bicycle"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button
+                [color]="selectedBaseLayer === baseLayer.transport ? 'danger' : 'primary'"
+                (click)="switchBaseLayer(baseLayer.transport)"
+            >
+                <ion-icon name="car"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button [color]="selectedBaseLayer === baseLayer.osm ? 'danger' : 'primary'" (click)="switchBaseLayer(baseLayer.osm)">
+                <ion-icon name="map-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button
+                [color]="selectedBaseLayer === baseLayer.offline ? 'danger' : 'primary'"
+                (click)="switchBaseLayer(baseLayer.offline)"
+            >
+                <ion-icon name="cloud-offline-outline"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+    </ion-fab>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="locate()">
+        <ion-fab-button>
+            <ion-icon name="locate"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <div class="leaflet" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)"></div>
 </ion-content>

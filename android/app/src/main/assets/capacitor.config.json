@@ -1,7 +1,6 @@
 {
-    "appId": "io.ionic.starter",
-    "appName": "ionic-angular-1",
-    "webDir": "www",
-    "bundledWebRuntime": false,
-    "linuxAndroidStudioPath": "/home/novica/install/android-studio/bin/studio.sh"
+	"appId": "io.ionic.starter",
+	"appName": "ionic-angular-1",
+	"webDir": "www",
+	"bundledWebRuntime": false
 }
