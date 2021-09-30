@@ -111,6 +111,7 @@ export class MapPage {
     private onLocationSuccess(position: GeolocationPosition) {
         const { accuracy, latitude, longitude } = position.coords;
         const latlng = [latitude, longitude];
+        console.log('onLocationSuccess', position);
         this.hideLoading();
         this.map.setView(latlng, 12);
         const accuracyValue = accuracy > 1000 ? accuracy / 1000 : accuracy;

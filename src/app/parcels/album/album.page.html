@@ -1,30 +1,29 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-fab-button slot="end" shape="round" color="light" class="ion-margin">
+        <!-- [routerLink]="['./', 'camera']" -->
+        <ion-fab-button slot="end" shape="round" color="light" class="ion-margin-end" size="small" (click)="onCameraClicked()">
             <ion-icon name="camera"></ion-icon>
         </ion-fab-button>
-        <ion-title size="large" class="ion-margin"> <h1>Photos</h1></ion-title>
+        <ion-title class="ion-margin">Photo</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <div style="height: 50%">
-        <ion-grid>
-            <ion-row>
-                <ion-col class="ion-text-center" size="12" size-sm="8" offset-sm="2">
-                    <ion-card>
-                        <ion-card-header>
-                            <ion-card-title>{{toShowPhoto.title}} </ion-card-title>
-                        </ion-card-header>
-                        <ion-img [src]="toShowPhoto.imgUrl"></ion-img>
-                        <ion-card-content>{{toShowPhoto.desc }}</ion-card-content>
-                    </ion-card>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </div>
-    <ion-grid class="ion-margin">
+    <ion-grid>
         <ion-row>
+            <ion-col class="ion-text-center" size="12" size-sm="8" offset-sm="2">
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-title>{{toShowPhoto.title}} </ion-card-title>
+                    </ion-card-header>
+                    <ion-img [src]="toShowPhoto.imgUrl"></ion-img>
+                    <ion-card-content>{{toShowPhoto.desc }}</ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid class="ion-margin">
+        <!-- <ion-row>
             <ion-col class="ion-text-center">
                 <ion-list shape="round">
                     <ion-item
@@ -35,13 +34,30 @@
                         (click)="onItemClicked(itm.id)"
                     >
                         <ion-avatar slot="start">
-                            <ion-thumbnail class="radius-lg ion-margin-end">
+                            <ion-thumbnail class="radius ion-margin-end">
                                 <img [src]="itm.imgUrl" />
                             </ion-thumbnail>
                         </ion-avatar>
                         <ion-label>
-                            <h1>{{itm.title}}</h1>
+                            <h3>{{itm.title}}</h3>
                             <p>{{itm.desc}}</p>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row> -->
+        <ion-row>
+            <ion-col class="ion-text-center">
+                <ion-list shape="round">
+                    <ion-item detail class="radius" *ngFor="let itm of Data" (click)="onItemClicked(itm.id)">
+                        <ion-avatar slot="start">
+                            <ion-thumbnail class="radius ion-margin-end">
+                                <img [src]="decodeImage(itm.base_64)" />
+                            </ion-thumbnail>
+                        </ion-avatar>
+                        <ion-label>
+                            <h3>{{itm.lat}}</h3>
+                            <p>{{itm.long}}</p>
                         </ion-label>
                     </ion-item>
                 </ion-list>
